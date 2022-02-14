@@ -1,0 +1,60 @@
+My name is Taj, like the Mahal.This message was appended.
+
+//const fs = require('fs');
+
+//* writeFileSync writes to file, if file doesn't ext it will create file.
+//* if file does ext, it will overwrite file with new content.
+
+//fs.writeFileSync('notes.txt', 'This file was created by Node.JS');
+//fs.writeFileSync('notes.txt', 'My name is Taj, like the Mahal.');
+
+//* Appending a new message to notes.txt
+//fs.appendFileSync('notes.txt', 'This message was appended.');
+
+//* ./ is a relative path to file
+//* inporting the name varible from utils.js
+
+//const add = require('./utils.js');
+const notes = require('./notes.js');
+
+//const sum = add(8, 9);
+
+//console.log(sum);
+console.log(notes.getNotes());
+
+---------
+
+//*Reuqiring the Validator package and setting to validator.
+const validator = require('validator');
+
+const notes = require('./notes.js');
+
+console.log(notes.getNotes());
+
+//*Validating email address - logs true
+console.log(validator.isEmail('taj@gmail.com'));
+
+//*Validating email address - logs false
+console.log(validator.isEmail('gmail.com'));
+
+//*Validating URL address - logs true
+console.log(validator.isURL('https://tajhakeem.me'));
+
+//*Validating URL address - logs false
+console.log(validator.isURL('htt://tajhakeem.me'));
+
+---------
+
+const _success = chalk.bold.inverse.green;
+const _warning = chalk.bold.inverse.yellow;
+const _error = chalk.bold.inverse.red;
+
+console.log(notes.getNotes());
+
+console.log(_success('Success!'));
+console.log(_warning('Warning!'));
+console.log(_error('Error!'));
+
+console.log(process.argv[2]);
+
+---------
