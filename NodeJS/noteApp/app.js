@@ -62,8 +62,15 @@ yargs.command({
 yargs.command({
 	command: 'read',
 	describe: 'Reading note from app',
-	handler() {
-		console.log('Reading a note from app...');
+	builder: {
+		title: {
+			describe: 'Note title to read',
+			demandOption: true,
+			type: 'string'
+		}
+	},
+	handler(argv) {
+		notes.readNote(argv.title);
 	}
 });
 
@@ -72,7 +79,7 @@ yargs.command({
 	command: 'list',
 	describe: 'Listing out notes from app',
 	handler() {
-		console.log('Note on app are...');
+		notes.listNotes();
 	}
 });
 

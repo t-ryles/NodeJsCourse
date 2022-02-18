@@ -1,9 +1,12 @@
 const { log } = require('console');
 const fs = require('fs');
 const chalk = require('chalk');
+const { title } = require('process');
 
 const _success = chalk.bold.inverse.green;
 const _error = chalk.bold.inverse.red;
+const _attention = chalk.bold.underline.inverse;
+const _title = chalk.cyan;
 
 const getNotes = () => {
 	'Your notes...';
@@ -24,9 +27,10 @@ const loadNotes = () => {
 const addNote = (title, body) => {
 	const notes = loadNotes();
 
-	const duplicateNotes = notes.filter((note) => note.Title === title);
+	//const duplicateNotes = notes.filter((note) => note.Title === title);
+	const duplicateNote = notes.find((note) => note.Title === title);
 
-	if (duplicateNotes.length === 0) {
+	if (!duplicateNote) {
 		notes.push({
 			Title: title,
 			Body: body
@@ -59,12 +63,34 @@ const removeNote = (Title) => {
 };
 
 //Todo Read Note
+const readNote = (Title) => {
+	const notes = loadNotes();
+
+	//const duplicateNotes = notes.filter((note) => note.Title === title);
+	const findNote = notes.find((note) => note.Title === title);
+
+	if (!findNote) {
+		console.log(_success('Note found'));
+	} else {
+		console.log(_error('No note found.'));
+	}
+};
 
 //Todo List Notes
+const listNotes = () => {
+	console.log(_attention('Your Notes: '));
+	const notes = loadNotes();
+
+	notes.forEach((note) => {
+		console.log(_title(note.Title));
+	});
+};
 
 //? Setting export to an object to export multiple objects
 module.exports = {
 	getNotes: getNotes,
 	addNote: addNote,
-	removeNote: removeNote
+	removeNote: removeNote,
+	listNotes: listNotes,
+	readNote: readNote
 };
