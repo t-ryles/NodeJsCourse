@@ -8,10 +8,6 @@ const _error = chalk.bold.inverse.red;
 const _attention = chalk.bold.underline.inverse;
 const _title = chalk.cyan;
 
-const getNotes = () => {
-	'Your notes...';
-};
-
 //todo Load Notes
 const loadNotes = () => {
 	try {
@@ -29,6 +25,8 @@ const addNote = (title, body) => {
 
 	//const duplicateNotes = notes.filter((note) => note.Title === title);
 	const duplicateNote = notes.find((note) => note.Title === title);
+
+	debugger;
 
 	if (!duplicateNote) {
 		notes.push({
@@ -66,13 +64,13 @@ const removeNote = (Title) => {
 const readNote = (Title) => {
 	const notes = loadNotes();
 
-	//const duplicateNotes = notes.filter((note) => note.Title === title);
-	const findNote = notes.find((note) => note.Title === title);
+	const findNote = notes.find((note) => note.Title === Title);
 
-	if (!findNote) {
-		console.log(_success('Note found'));
+	if (findNote) {
+		console.log(_success(findNote.Title));
+		console.log(findNote.Body);
 	} else {
-		console.log(_error('No note found.'));
+		console.log(_error('Unable to find note.'));
 	}
 };
 
@@ -88,7 +86,6 @@ const listNotes = () => {
 
 //? Setting export to an object to export multiple objects
 module.exports = {
-	getNotes: getNotes,
 	addNote: addNote,
 	removeNote: removeNote,
 	listNotes: listNotes,
