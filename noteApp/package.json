@@ -1,0 +1,21 @@
+{
+  "name": "noteapp",
+  "version": "1.0.0",
+  "description": "NodeJs Notes App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/t-ryles"
+  },
+  "author": "Taj-Hakeem Ryles",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "missing": "^0.0.1",
+    "validator": "^13.7.0",
+    "yargs": "^12.0.2"
+  }
+}
