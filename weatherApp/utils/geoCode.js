@@ -1,15 +1,9 @@
-const { config } = require('nodemon');
 const request = require('postman-request');
 const geoCodeKey = require('./geoCodeKey.js');
 
 //ToDO Define a function
 const geoCode = (address, callback) => {
 	const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${geoCodeKey}&limit=1`;
-
-	// const url =
-	// 	'https://api.mapbox.com/geocoding/v5/mapbox.places/' +
-	// 	encodeURIComponent(address) +
-	// 	'.json?access_token=pk.eyJ1IjoidGFqaGFrZWVtIiwiYSI6ImNrenhqZmpqaDAxemsybnJuNjZ0MzN2ejIifQ.WmAqi_mLZPaqKrhrZ8Dj_g&limit=1';
 
 	request({ url: url, json: true }, (error, res) => {
 		if (error) {
@@ -28,13 +22,6 @@ const geoCode = (address, callback) => {
 		}
 	});
 };
-
-//ToDo Call function
-geoCode('Kansas City', (error, data) => {
-	//? Error if we don't get data back
-	console.log('Error', error);
-	console.log('Data', data);
-});
 
 //ToDO Export geoCode function
 module.exports = geoCode;

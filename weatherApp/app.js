@@ -1,8 +1,6 @@
-const request = require('postman-request');
-
 const geoCode = require('./utils/geoCode');
 
-const forecast = request('./utils/forecast');
+const forecast = require('./utils/forecast');
 
 // const urlWearther =
 // 	'http://api.weatherstack.com/current?access_key=75cbea6d42fc13e01e04af564654cb19&query=37.8267,-122.4233&units=f';
@@ -57,3 +55,22 @@ const forecast = request('./utils/forecast');
 //    - Low level error, pass string for error
 //    - Coordinate error, pass string for error
 //    - Success, pass forecast string for data (same format as from before)
+
+//ToDo Call function
+geoCode('Kansas', (error, geoCodeData) => {
+	if (error) {
+		return console.log(error);
+	}
+	//? Error if we don't get data back
+	//console.log('Error', error);
+	//ToDo Call function
+	forecast(geoCodeData.long, geoCodeData.lat, (error, forecastData) => {
+		if (error) {
+			return console.log(error);
+		}
+		//console.log('Error', error);
+		//console.log('Data', forecastData);
+		console.log(geoCodeData.loc);
+		console.log(forecastData);
+	});
+});
