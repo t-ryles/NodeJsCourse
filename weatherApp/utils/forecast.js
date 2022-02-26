@@ -1,14 +1,17 @@
 const request = require('postman-request');
-const forecastKey = config.forecastKey;
+const forecastKey = require('./forecastKey.js');
 
 //ToDO Define function
 const forecast = (lat, long, callback) => {
 	const url = `http://api.weatherstack.com/current?access_key=${forecastKey}&query=${lat},${long}&units=f`;
 
+	console.log(lat);
+	console.log(long);
+
 	request({ url: url, json: true }, (error, res) => {
 		if (error) {
 			callback('Unable to connect to location service.');
-		} else if (res.body.success === 'false') {
+		} else if (res.body.success === false) {
 			callback(res.body.error.info);
 		} else {
 			callback(undefined, {

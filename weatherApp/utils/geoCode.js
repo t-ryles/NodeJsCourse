@@ -1,6 +1,6 @@
 const { config } = require('nodemon');
 const request = require('postman-request');
-const geoCodeKey = config.geoCodeKey;
+const geoCodeKey = require('./geoCodeKey.js');
 
 //ToDO Define a function
 const geoCode = (address, callback) => {
