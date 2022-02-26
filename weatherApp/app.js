@@ -56,21 +56,28 @@ const forecast = require('./utils/forecast');
 //    - Coordinate error, pass string for error
 //    - Success, pass forecast string for data (same format as from before)
 
-//ToDo Call function
-geoCode('Kansas', (error, geoCodeData) => {
-	if (error) {
-		return console.log(error);
-	}
-	//? Error if we don't get data back
-	//console.log('Error', error);
+//! User input Challenge
+//ToDo Use process.argv[2] for user input
+const command = process.argv[2];
+if (command === '') {
+	console.log('Enter a valid location');
+} else {
 	//ToDo Call function
-	forecast(geoCodeData.long, geoCodeData.lat, (error, forecastData) => {
+	geoCode(command, (error, geoCodeData) => {
 		if (error) {
 			return console.log(error);
 		}
+		//? Error if we don't get data back
 		//console.log('Error', error);
-		//console.log('Data', forecastData);
-		console.log(geoCodeData.loc);
-		console.log(forecastData);
+		//ToDo Call function
+		forecast(geoCodeData.long, geoCodeData.lat, (error, forecastData) => {
+			if (error) {
+				return console.log(error);
+			}
+			//console.log('Error', error);
+			//console.log('Data', forecastData);
+			console.log(geoCodeData.loc);
+			console.log(forecastData);
+		});
 	});
-});
+}
