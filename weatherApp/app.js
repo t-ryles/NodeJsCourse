@@ -59,24 +59,24 @@ const forecast = require('./utils/forecast');
 //! User input Challenge
 //ToDo Use process.argv[2] for user input
 const command = process.argv[2];
-if (command === '') {
+if (command === undefined) {
 	console.log('Enter a valid location');
 } else {
-	//ToDo Call function
-	geoCode(command, (error, geoCodeData) => {
+	//ToDo Call function  = {}
+	geoCode(command, (error, { long, lat, loc }) => {
 		if (error) {
 			return console.log(error);
 		}
 		//? Error if we don't get data back
 		//console.log('Error', error);
 		//ToDo Call function
-		forecast(geoCodeData.long, geoCodeData.lat, (error, forecastData) => {
+		forecast(long, lat, (error, forecastData) => {
 			if (error) {
 				return console.log(error);
 			}
 			//console.log('Error', error);
 			//console.log('Data', forecastData);
-			console.log(geoCodeData.loc);
+			console.log(loc);
 			console.log(forecastData);
 		});
 	});
