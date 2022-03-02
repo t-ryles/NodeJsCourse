@@ -1,0 +1,18 @@
+{
+  "name": "webserver",
+  "version": "1.0.0",
+  "description": "Web server practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/t-ryles"
+  },
+  "author": "Taj-Hakeem Ryles",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

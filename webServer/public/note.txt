@@ -1,0 +1,5 @@
+--Route Note
+So serve the content of the directory, the path to the fold needs to be a absoute from the root of your machine.
+-Node has two varible to help out with this:
+__dirname = directory name
+__filename = file name
