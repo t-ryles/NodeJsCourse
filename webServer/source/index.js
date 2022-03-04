@@ -1,10 +1,11 @@
 const path = require('path');
 const express = require('express');
 
+const publicDirectoryPath = path.join(__dirname, '../public');
+
 const app = express();
 
-console.log(__dirname);
-console.log(__filename);
+app.use(express.static(publicDirectoryPath));
 
 // App.get() taks in two argurment, route and function
 // function describe what we want to do whens someone visits that route
@@ -14,23 +15,19 @@ console.log(__filename);
 //app.com/help
 //app.com/about
 
-app.get('', (req, res) => {
-	res.send('<h1>Hello from Express</h1>');
-});
-
 //? Setting a route to the 'Help' page
-app.get('/help', (req, res) => {
-	res.send({
-		name: 'Taj',
-		age: 31,
-		location: 'Lincoln'
-	});
-});
+// app.get('/help', (req, res) => {
+// 	res.send({
+// 		name: 'Taj',
+// 		age: 31,
+// 		location: 'Lincoln'
+// 	});
+// });
 
 //ToDo Set up route for 2 new pages: About and Weather
-app.get('/about', (req, res) => {
-	res.send('<h1>Hello from About</h1>');
-});
+// app.get('/about', (req, res) => {
+// 	res.send('<h1>Hello from About</h1>');
+// });
 
 app.get('/weather', (req, res) => {
 	res.send({
