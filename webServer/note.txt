@@ -1,4 +1,4 @@
---Route Note
+!--Route Note
 So serve the content of the directory, the path to the fold needs to be a absoute from the root of your machine.
 -Node has two varible to help out with this:
 __dirname = directory name
@@ -8,14 +8,14 @@ __filename = file name
 <link rel="stylesheet" href="./style/style.css">
 
 -Absoute path to style sheet; based of the web server route; the pubilc folder
-<link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/style.css">
 
 *Just loading the JS file in index.html file.
 
---static mean the elements on the page won't change.
+!--static mean the elements on the page won't change.
 app.use(express.static(publicDirectoryPath));
 
---Handle Bar require a views folder in the root directory of the project.
+?--Handle Bar require a views folder in the root directory of the project.
 
     webServer <--Root
     -node_modules
@@ -29,3 +29,16 @@ app.use(express.static(publicDirectoryPath));
 
 *If you want to inject a value in an HBS file, open and close two curly braces.
     -- {{}}
+
+!--Customizing View Directory
+To customize the location for the view directory, you have to tell express where to look.
+    const viewsPath = path.join((__dirname, '../views')); absoutepath to views directory.
+    ../ tell express to go up a directory.
+
+
+!--Handle Bar Partials's
+* Partials's allow us to create little template for part of bigger webpage
+* Partials's are kept in a different directory than the views.
+Partials still uses the hbs extention.
+?What goes inside a partials doc?
+    It is just html elements.

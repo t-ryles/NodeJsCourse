@@ -1,15 +1,25 @@
 const path = require('path');
 const express = require('express');
+const hbs = require('hbs');
 
+//! Defining paths for express configs
 const publicDirectoryPath = path.join(__dirname, '../public');
+const viewsPath = path.join(__dirname, '../pages/views');
+const partialsPath = path.join(__dirname, '../pages/partials');
 
 const app = express();
 
+//! Setting up handlebars engine and views location
 //? Setting the value for a given Express set.
 //? Displayed as a key:value pair
-app.set('view engine', 'hbs');
 //? Setting up handlebar
+app.set('view engine', 'hbs');
+//? Pointing express to the custom directory
+app.set('views', viewsPath);
+//? Config partials
+hbs.registerPartials(partialsPath);
 
+//! Seting up static directory to serve
 app.use(express.static(publicDirectoryPath));
 
 //? Setting up index.hbs
