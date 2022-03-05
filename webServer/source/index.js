@@ -12,6 +12,30 @@ app.set('view engine', 'hbs');
 
 app.use(express.static(publicDirectoryPath));
 
+//? Setting up index.hbs
+app.get('', (req, res) => {
+	//? First: The render value name needs to match the file name without the extention.
+	//? Second: Is an object that contains all the values the view can access.
+	res.render('index', {
+		title: 'Weather App',
+		name: 'Taj Ryles'
+	});
+});
+
+app.get('/about', (req, res) => {
+	res.render('about', {
+		title: 'About Me',
+		name: 'Taj Ryles'
+	});
+});
+
+//Todo Create template for help page
+app.get('/help', (req, res) => {
+	res.render('help', {
+		message: 'Hello, what can I help you with?'
+	});
+});
+
 // App.get() taks in two argurment, route and function
 // function describe what we want to do whens someone visits that route
 // / after app.com = new route

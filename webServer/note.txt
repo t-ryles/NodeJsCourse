@@ -26,3 +26,6 @@ app.use(express.static(publicDirectoryPath));
     note.txt
     package-lock.json
     package.json
+
+*If you want to inject a value in an HBS file, open and close two curly braces.
+    -- {{}}
