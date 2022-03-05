@@ -5,6 +5,11 @@ const publicDirectoryPath = path.join(__dirname, '../public');
 
 const app = express();
 
+//? Setting the value for a given Express set.
+//? Displayed as a key:value pair
+app.set('view engine', 'hbs');
+//? Setting up handlebar
+
 app.use(express.static(publicDirectoryPath));
 
 // App.get() taks in two argurment, route and function

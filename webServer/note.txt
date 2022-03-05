@@ -3,3 +3,26 @@ So serve the content of the directory, the path to the fold needs to be a absout
 -Node has two varible to help out with this:
 __dirname = directory name
 __filename = file name
+
+-Relative path to style stylesheet
+<link rel="stylesheet" href="./style/style.css">
+
+-Absoute path to style sheet; based of the web server route; the pubilc folder
+<link rel="stylesheet" href="/style/style.css">
+
+*Just loading the JS file in index.html file.
+
+--static mean the elements on the page won't change.
+app.use(express.static(publicDirectoryPath));
+
+--Handle Bar require a views folder in the root directory of the project.
+
+    webServer <--Root
+    -node_modules
+    -public
+    -source
+    -views <--Reqired folder
+    .gitignore
+    note.txt
+    package-lock.json
+    package.json
