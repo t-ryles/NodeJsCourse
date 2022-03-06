@@ -78,6 +78,27 @@ app.get('/weather', (req, res) => {
 	});
 });
 
+//ToDO Build both 404 pages to render an HTML page
+
+//* 404 Help page handler
+app.get('/help/*', (req, res) => {
+	res.render('404page', {
+		title: '404',
+		name: 'Taj Ryles',
+		message: 'Help article not found.'
+	});
+});
+
+//* Generic 404 Page handler
+app.get('*', (req, res) => {
+	//? * express wild card rout handler, it matches anything that hasn't been match alread.
+	res.render('404page', {
+		title: '404',
+		name: 'Taj Ryles',
+		message: 'Page Not Found.'
+	});
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}.`));
