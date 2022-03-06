@@ -6,14 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
-
-    <title>About.HTML</title>
+    <link rel="icon" href="/webServer/public/images/weather.png">
+    <title>{{title}}.HBS</title>
 </head>
 
 <body>
     
-    {{>header}}
-    <img src="/images/HeadShot.jpg" alt="">
+    <div class="mainContainer">
+        {{>header}}
+        <img class="myImage" src="/images/HeadShot.jpg" alt="">
+    </div>
+
     {{>footer}}
 
 </body>

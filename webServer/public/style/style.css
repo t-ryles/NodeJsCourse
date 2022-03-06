@@ -1,8 +1,42 @@
-h1 {
-	color: aquamarine;
-	background-color: gray;
+body {
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	max-width: 650px;
+	margin: 0 auto;
+	padding: 0 16px;
+
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
-img {
+header {
+	margin: 16px 0 48px 0;
+}
+
+h1 {
+	text-align: center;
+	font-size: 64px;
+	margin-bottom: 48px;
+}
+
+header a {
+	color: #888;
+	margin-right: 16px;
+	text-decoration: none;
+}
+
+.myImage {
 	width: 250px;
+}
+
+.mainContainer {
+	flex-grow: 1;
+}
+
+footer {
+	color: #888;
+	border-top: 1px solid #eee;
+	margin-top: 16px;
+	padding: 16px 0;
 }
