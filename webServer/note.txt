@@ -42,3 +42,12 @@ To customize the location for the view directory, you have to tell express where
 Partials still uses the hbs extention.
 ?What goes inside a partials doc?
     It is just html elements.
+    To render a partial, you still use {{}} plue a > in the middle.
+    -{{>}}
+    After the > symbol, you provide the partial name; ie the file name
+    -{{>header}}
+    !No path or extention needed.
+
+Todo: nodemon source/index.js -e js,hbs
+    -Extended the nodemon useage to include js files and hbs files.
+    - (-e js,hbs)

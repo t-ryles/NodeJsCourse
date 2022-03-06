@@ -42,6 +42,8 @@ app.get('/about', (req, res) => {
 //Todo Create template for help page
 app.get('/help', (req, res) => {
 	res.render('help', {
+		title: 'Help',
+		name: 'Taj Ryles',
 		message: 'Hello, what can I help you with?'
 	});
 });
