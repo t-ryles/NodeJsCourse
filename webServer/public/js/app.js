@@ -10,16 +10,35 @@ console.log('Client side JS file is loaded!');
 
 //Todo Fetch weather data from API endpoint we set up
 
-const url = `http://localhost:3000/weather?address=boston`;
+const weatherForm = document.querySelector('form');
+const searchInput = document.querySelector('input');
 
-fetch(url).then((res) => {
-	res.json().then((data) => {
-		//? Check for error
-		if (data.error) {
-			console.log(data.error);
-		} else {
-			console.log(data.Location);
-			console.log(data.Forecast);
-		}
+const inputOne = document.getElementById('inputOne');
+const inputTwo = document.getElementById('inputTwo');
+
+inputOne.textContent = '';
+
+weatherForm.addEventListener('submit', (e) => {
+	const userInputSearch = searchInput.value;
+
+	const url = `http://localhost:3000/weather?address=${userInputSearch}`;
+	//? e is the eventObject that is generated from the event listener.
+	e.preventDefault();
+
+	//Todo Loading message
+	inputOne.textContent = 'Gathering forecast data...';
+	inputTwo.textContent = '';
+
+	fetch(url).then((res) => {
+		res.json().then((data) => {
+			//? Check for error
+			if (data.error) {
+				//Todo dynamicly generate weather data to web page
+				inputOne.textContent = data.error;
+			} else {
+				inputOne.textContent = data.Location;
+				inputTwo.textContent = data.Forecast;
+			}
+		});
 	});
 });
