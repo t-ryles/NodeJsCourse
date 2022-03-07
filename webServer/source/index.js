@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
 const geoCode = require('./utils/geoCode');
-
 const forecast = require('./utils/forecast');
 
 //! Defining paths for express configs
@@ -77,10 +76,10 @@ app.get('/help', (req, res) => {
 app.get('/weather', (req, res) => {
 	if (!req.query.address) {
 		return res.send({
-			error: 'You must provide an address.'
+			error: 'You must provide an valided location.'
 		});
 	} //Todo Wire up /weather to get back actual weather data
-	geoCode(req.query.address, (error, { long, lat, loc }) => {
+	geoCode(req.query.address, (error, { long, lat, loc } = {}) => {
 		if (error) {
 			return res.send(error);
 		}

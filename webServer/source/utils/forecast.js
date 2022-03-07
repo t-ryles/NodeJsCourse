@@ -1,5 +1,5 @@
 const request = require('postman-request');
-const forecastKey = require('./forecastKey.js');
+const forecastKey = require('./forecastKey');
 
 //ToDO Define function
 const forecast = (lat, long, callback) => {
