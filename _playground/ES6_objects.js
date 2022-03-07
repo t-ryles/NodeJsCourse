@@ -48,7 +48,8 @@ console.log(rating);
 
 //Todo
 //? Desturcturing the object in the function setup
-const transaction = (type, { label, stock }) => {
+//? ={} is setting up an default object
+const transaction = (type, { label = 'Product specified.', stock = 0 } = {}) => {
 	console.log(type, label, stock);
 };
 

@@ -80,7 +80,7 @@ app.get('/weather', (req, res) => {
 			error: 'You must provide an address.'
 		});
 	} //Todo Wire up /weather to get back actual weather data
-	geoCode(req.query.address, (error, { long, lat, loc }) => {
+	geoCode(req.query.address, (error, { long, lat, loc } = {}) => {
 		if (error) {
 			return res.send(error);
 		}
