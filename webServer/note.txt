@@ -54,3 +54,7 @@ Partials still uses the hbs extention.
 Todo: nodemon source/index.js -e js,hbs
     -Extended the nodemon useage to include js files and hbs files.
     - (-e js,hbs)
+
+! --Fecth
+Fecth is a function which takes in a URL as a string.
+    ex: fetch('http://puzzel.mead.io/puzzle')
