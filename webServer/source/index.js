@@ -10,22 +10,22 @@ const partialsPath = path.join(__dirname, '../pages/partials');
 const app = express();
 
 //! Setting up handlebars engine and views location
-//? Setting the value for a given Express set.
-//? Displayed as a key:value pair
-//? Setting up handlebar
+// Setting the value for a given Express set.
+// Displayed as a key:value pair
+// Setting up handlebar
 app.set('view engine', 'hbs');
-//? Pointing express to the custom directory
+// Pointing express to the custom directory
 app.set('views', viewsPath);
-//? Config partials
+// Config partials
 hbs.registerPartials(partialsPath);
 
 //! Seting up static directory to serve
 app.use(express.static(publicDirectoryPath));
 
-//? Setting up index.hbs
+// Setting up index.hbs
 app.get('', (req, res) => {
-	//? First: The render value name needs to match the file name without the extention.
-	//? Second: Is an object that contains all the values the view can access.
+	// First: The render value name needs to match the file name without the extention.
+	// Second: Is an object that contains all the values the view can access.
 	res.render('index', {
 		title: 'Weather App',
 		name: 'Taj Ryles'
@@ -56,7 +56,7 @@ app.get('/help', (req, res) => {
 //app.com/help
 //app.com/about
 
-//? Setting a route to the 'Help' page
+// Setting a route to the 'Help' page
 // app.get('/help', (req, res) => {
 // 	res.send({
 // 		name: 'Taj',
@@ -70,13 +70,34 @@ app.get('/help', (req, res) => {
 // 	res.send('<h1>Hello from About</h1>');
 // });
 
+//ToDo Update endpoint to accept address
 app.get('/weather', (req, res) => {
+	if (!req.query.address) {
+		return res.send({
+			error: 'You must provide an address.'
+		});
+	}
 	res.send({
 		// ALT + 0176 = °
 		forecast: '45° and Sunny',
-		location: 'Lincoln, Ne'
+		location: 'Lincoln, Ne',
+		address: req.query.address
 	});
 });
+
+// app.get('/products', (req, res) => {
+// 	//? This code will run if a search term is not provided.
+// 	if (!req.query.search) {
+// 		//? Return prevents header error, else statement would've also worked.
+// 		return res.send({
+// 			error: 'You must proved a search term.'
+// 		});
+// 	}
+// 	console.log(req.query.search);
+// 	res.send({
+// 		products: []
+// 	});
+// });
 
 //ToDO Build both 404 pages to render an HTML page
 
