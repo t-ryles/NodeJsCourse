@@ -21,7 +21,7 @@ inputOne.textContent = '';
 weatherForm.addEventListener('submit', (e) => {
 	const userInputSearch = searchInput.value;
 
-	const url = `http://localhost:3000/weather?address=${userInputSearch}`;
+	const url = `/weather?address=${userInputSearch}`;
 	//? e is the eventObject that is generated from the event listener.
 	e.preventDefault();
 

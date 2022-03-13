@@ -10,6 +10,7 @@ const viewsPath = path.join(__dirname, '../pages/views');
 const partialsPath = path.join(__dirname, '../pages/partials');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 //! Setting up handlebars engine and views location
 // Setting the value for a given Express set.
@@ -130,7 +131,5 @@ app.get('*', (req, res) => {
 		message: 'Page Not Found.'
 	});
 });
-
-const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}.`));
