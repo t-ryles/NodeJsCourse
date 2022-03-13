@@ -58,3 +58,8 @@ Todo: nodemon source/index.js -e js,hbs
 ! --Fecth
 Fecth is a function which takes in a URL as a string.
     ex: fetch('http://puzzel.mead.io/puzzle')
+
+! --Node Mobules
+npm install; gets all the node mobules for said project
+?                   --save-dev; saves it as a dev dependecies.   
+npm i nodemon@1.2.0 --save-dev
