@@ -27,45 +27,43 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 		//?Referance is stored in a new varible = db
 		const db = client.db(databaseName);
 
-		// db.collection('users').findOne({ _id: new ObjectID('622e1dbb137741022536057b') }, (error, user) => {
-		// 	if (error) {
-		// 		return console.log('Unable to fetch');
-		// 	} else {
-		// 		console.log(user);
-		// 	}
-		// });
+		// db
+		// 	.collection('users')
+		// 	.updateOne(
+		// 		{
+		// 			_id: new ObjectID('6235eb3ad2bf72024f5820e7')
+		// 		},
+		// 		{
+		// 			$inc: {
+		// 				age: -1
+		// 			}
+		// 		}
+		// 	)
+		// 	.then((result) => {
+		// 		console.log(result);
+		// 	})
+		// 	.catch((error) => {
+		// 		console.log(error);
+		// 	});
 
-		// db.collection('users').find({ age: 31 }).toArray((error, users) => {
-		// 	if (error) {
-		// 		return console.log('Error');
-		// 	} else {
-		// 		console.log(users);
-		// 	}
-		// });
-
-		// db.collection('users').find({ age: 31 }).count((error, count) => {
-		// 	if (error) {
-		// 		return console.log('Error');
-		// 	} else {
-		// 		console.log(count);
-		// 	}
-		// });
-
-		//ToDo Challenge
-		db.collection('tasks').findOne({ _id: new ObjectID('622e1f730cea94022c28e062') }, (error, task) => {
-			if (error) {
-				return console.log('Unable to fetch');
-			} else {
-				console.log(task);
-			}
-		});
-
-		db.collection('tasks').find({ completed: false }).toArray((error, tasks) => {
-			if (error) {
-				return console.log('Error');
-			} else {
-				console.log(tasks);
-			}
-		});
+		//ToDo: Challange
+		db
+			.collection('tasks')
+			.updateMany(
+				{
+					completed: false
+				},
+				{
+					$set: {
+						completed: true
+					}
+				}
+			)
+			.then((result) => {
+				console.log(result);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	}
 });
