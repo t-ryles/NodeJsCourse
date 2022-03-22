@@ -1,9 +1,13 @@
 //ToDo: Build CRUD operations
 
-const mongoDB = require('mongodb');
+// const mongoDB = require('mongodb');
+// //? Mongo client gives us access to the fuction necessary to connect to the database for the CRUD operations
+// const MongoClient = mongoDB.MongoClient;
+// //?Getting MongoBD ID
+// const ObjectID = mongodb.ObjectID;
 
-//? Mongo client gives us access to the fuction necessary to connect to the database for the CRUD operations
-const MongoClient = mongoDB.MongoClient;
+//! Desturcted version ^
+const { MongoClient, ObjectID } = require('mongodb');
 
 //? URL for the database
 const connectionURL = 'mongodb://127.0.0.1:27017';
@@ -17,62 +21,51 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 		return console.log('Unable to connect to database');
 	} else {
 		//? Will run when connnection to database is made
+
 		//console.log('Connected to database');
 		//?client.db takes in the database name we made and returns a referance to that database.
 		//?Referance is stored in a new varible = db
 		const db = client.db(databaseName);
 
-		//? NoSQL deal with data in collections
-		// //* insertOne allows you to insert a single doc into a collection
-		// db.collection('users').insertOne({
-		// 	//? insertone is an asyn function
-		// 	name: 'Taj-hakeem',
-		// 	age: 31
-		// }, (error, result) => {
-		// 	//? Callback function called when insertOne is complete
-		// 	//? If the error object ex
+		// db.collection('users').findOne({ _id: new ObjectID('622e1dbb137741022536057b') }, (error, user) => {
 		// 	if (error) {
-		// 		return console.log('Unable to insert user.');
+		// 		return console.log('Unable to fetch');
+		// 	} else {
+		// 		console.log(user);
 		// 	}
-		// 	console.log(result.ops);
 		// });
 
-		//? insertMany wil insert more than one document
-		// db.collection('users').insertMany([
-		// 	{
-		// 		name: 'Jen',
-		// 		age: 28
-		// 	},
-		// 	{
-		// 		name: 'Tod',
-		// 		age: 53
-		// 	}
-		// ], (error, result) => {
+		// db.collection('users').find({ age: 31 }).toArray((error, users) => {
 		// 	if (error) {
-		// 		return console.log('Unable to insert users');
+		// 		return console.log('Error');
+		// 	} else {
+		// 		console.log(users);
 		// 	}
-		// 	console.log(result.ops);
 		// });
 
-		//Todo: Challenge
-		db.collection('tasks').insertMany([
-			{
-				descript: 'Node.Js course',
-				completed: false
-			},
-			{
-				descript: 'Groceries',
-				completed: true
-			},
-			{
-				descript: 'Laundry',
-				completed: true
-			}
-		], (error, result) => {
+		// db.collection('users').find({ age: 31 }).count((error, count) => {
+		// 	if (error) {
+		// 		return console.log('Error');
+		// 	} else {
+		// 		console.log(count);
+		// 	}
+		// });
+
+		//ToDo Challenge
+		db.collection('tasks').findOne({ _id: new ObjectID('622e1f730cea94022c28e062') }, (error, task) => {
 			if (error) {
-				return console.log('Unable to insert task.');
+				return console.log('Unable to fetch');
+			} else {
+				console.log(task);
 			}
-			console.log(result.ops);
+		});
+
+		db.collection('tasks').find({ completed: false }).toArray((error, tasks) => {
+			if (error) {
+				return console.log('Error');
+			} else {
+				console.log(tasks);
+			}
 		});
 	}
 });
