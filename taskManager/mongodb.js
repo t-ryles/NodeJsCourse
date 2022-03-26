@@ -27,38 +27,27 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 		//?Referance is stored in a new varible = db
 		const db = client.db(databaseName);
 
-		// db
-		// 	.collection('users')
-		// 	.updateOne(
-		// 		{
-		// 			_id: new ObjectID('6235eb3ad2bf72024f5820e7')
-		// 		},
-		// 		{
-		// 			$inc: {
-		// 				age: -1
-		// 			}
-		// 		}
-		// 	)
-		// 	.then((result) => {
-		// 		console.log(result);
-		// 	})
-		// 	.catch((error) => {
-		// 		console.log(error);
-		// 	});
+		db
+			.collection('users')
+			.deleteMany({
+				//? If you wanted to Delete items based off of multiple criteria you can add then here as well.
+				age: 31
+				//name: 'Taj-Hakeem',
+			})
+			.then((result) => {
+				console.log(result);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 
-		//ToDo: Challange
+		//ToDo: Use deleteOne to remove a task
+
 		db
 			.collection('tasks')
-			.updateMany(
-				{
-					completed: false
-				},
-				{
-					$set: {
-						completed: true
-					}
-				}
-			)
+			.deleteOne({
+				descript: 'Laundry'
+			})
 			.then((result) => {
 				console.log(result);
 			})
